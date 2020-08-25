@@ -1,0 +1,175 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="If you ask me a question, and I don't know the answer, I'm gonna tell you that I don't know. But I bet you what. I know how to find the answer, and I will find the answer." />
+        <title>Learn to Think Like a Programmer</title>
+    </head>
+    <body>
+        <h1 className="post-title">Learn to Think Like a Programmer</h1>
+        <p className="post-date">2020-08-02</p>
+        <div className="node-ssg">
+            <p>If you&#39;ve ever watched a movie called <a href="https://en.wikipedia.org/wiki/The_Pursuit_of_Happyness">The Pursuit of Happyness</a> you can remember a scene where Chris Gardner(Will Smith) was in a job interview, and he says this:</p>
+<blockquote>
+<p>I&#39;m the type of person, if you ask me a question, and I don&#39;t know the answer, I&#39;m gonna tell you that I don&#39;t know. But I bet you what. I know how to find the answer, and I will find the answer.</p>
+</blockquote>
+<p>Now you can ask me how does that relate to thinking like a programmer? Yes, it does, this is the mindset every professional programmer should have, amateurs programmers pretend to have the knowledge they don&#39;t possess while professional programmers aren&#39;t afraid to admit whey they are wrong or don&#39;t know, and we have also two important things: <strong>have a question(problem)</strong> and <strong>find the answer(solution)</strong>. I&#39;m sure you can agree with me that that&#39;s what programmers are dealing with every day, find solutions for problems. In this article, we&#39;re going to focus on how to find the solution for a problem you don&#39;t know in the first place.</p>
+<p>Actually programmers have different approaches when it comes to solving problems, but most of the programmers I talk to usually take the following steps to solve problems:</p>
+<!-- It can be easy to bring out an application or a solution of a problem you've already worked on, but what if you don't know the solution? what if you're stuck? how do you get yourself out of that chaos? yeah I know it can be easy to find a tutorial online or someone else's solution, but I don't think that's a the first route to take. Steve Jobs once said:
+
+> Everyone in this country should learn to program a computer, because it teaches you to think.
+
+When you try to understand the meaning of that quote, it means that there's a way programmers think therefore think about problems, and especially how to find solutions. Now the question is which approach programmers take to think about problems and come up with solutions. -->
+
+<ol>
+<li>Understand the problem they need to solve.</li>
+<li>Break the problem down into smaller problems.</li>
+<li>Solve each small problem.</li>
+<li>Assemble the solutions into the final solution.</li>
+</ol>
+<p>I don&#39;t think it&#39;s enough to give you the steps only, let&#39;s take a concrete example and go through all of those 4 steps by building a simple application.</p>
+<p>Recently I was tasked to write documentation for an API, and we realize that soon we gonna need to customize the tool I was using to write the documentation, I started to think about how I will do that, actually, the tool I was using is built on the same principles as the one I built on this blog, it is a Static Site Generator, I got the idea to build a small version of it, and then by that I will have some understanding of how the tool is working, but I didn&#39;t have any clue of how I can do it. Let&#39;s use the steps above and see how we can build something we don&#39;t know the solution in the first place. I know that it&#39;s not an innovative solution but it is a good example to show you how you can tackle any problem you don&#39;t know the solution and find it.</p>
+<p>Before we dive into building this let&#39;s first talk about prerequisites, which you need to follow this tutorial comfortably.</p>
+<p>I&#39;m gonna use Node.js to build this application, so you must-have basics of it and Javascript as well. If you have experience with another programming language you can follow along, Javascript is not hard you can understand most of the code we gonna write, or you can implement the fixtures we build here into the language you&#39;re comfortable with. Let&#39;s start with the first step.</p>
+<h2 id="understand-the-problem">Understand the problem.</h2>
+<p>Understing the problem will help you to solve it faster. Actually, most problems are hard because you don&#39;t understand them, one of the mistakes you can make as a programmer is to rush into writing code without understanding what problem you are trying to solve, I can relate too, writing code is fun but if you skip this step most of the times you&#39;ll find yourself stuck looking at a blank file without knowing what to do next. Here we&#39;re going simple, but this process can take much time depending on the complexity of the problem, so please do yourself a favor to spend some time analyzing and make sure to understand the problem you have, it would even require to go through a brainstorming session.</p>
+<p>For us we already know the problem we want to solve, we want to build a simple static site generator which will help us to write a blog post in markdown, and convert it into HTML so we can easily display it in our website later.</p>
+<h2 id="break-the-problem-down-into-smaller-problems">Break the problem down into smaller problems</h2>
+<p>When you do know the problem and understand it, it can be easier to solve it, but if it is complex and bigger, trying to solve it in one will make the process of solving it worse, so how can we do it? Desmond Tutu once wisely said:</p>
+<blockquote>
+<p>There is only one way to eat an elephant: a bite at a time.</p>
+</blockquote>
+<p>This means that every problem that seems daunting, overwhelming, and even impossible can be accomplished gradually by taking on just a little at a time. Breaking large problems into smaller problems requires practice and patience, continue practicing you&#39;ll only get better.</p>
+<p>The requirement for our project is to convert Markdown content to HTML. Here are the steps needed to fulfill it.</p>
+<ul>
+<li>Get the content from a markdown down file</li>
+<li>Convert markdown content to html</li>
+<li>Add Markdown content to HTML file</li>
+</ul>
+<!-- I got the idea to built my little version of a static site generator, I want it to be simple enough, just be able to write posts in markdown and have them generate them into html files. -->
+
+<p>Great, we now have smaller problems, let&#39;s start by setting up the environment and then continue working on them. Make sure you have Node.js installed in your machine or go on the <a href="https://nodejs.org/en/">official website</a> and download it, my favorite way to install Node.js is to use <a href="https://github.com/nvm-sh/nvm">NVM</a>.</p>
+<p>I hope you have Node.js installed on your machine, so create a folder, name it <code>node-ssg</code>, or whatever you want, it doesn&#39;t matter.</p>
+<p>When you install Node.js it comes with a package manager called <a href="https://www.npmjs.com/">NPM</a> let&#39;s use it to initialize our project and later we gonna use it to install dependencies. Go in the folder you created, and in your terminal run the following command.</p>
+<pre><code class="language-shell:node-ssg">npm init -y</code></pre>
+<p>The command above creates a file called <code>package.json</code> it&#39;ll contain all information related to our projects, like the version of the application, dependencies, and more. For now, it contains the following content.</p>
+<pre><code class="language-json:node-ssg/package.json">{
+  &quot;name&quot;: &quot;node-ssg&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;
+}</code></pre>
+<p>In the same folder, for me is <code>node-ssg</code> create another folder and name it <code>src</code> I&#39;m gonna use command line interface feel free to do so or use your graphical user interface.</p>
+<pre><code class="language-shell:node-ssg">mkdir src</code></pre>
+<p>And go in the <code>src</code> folder, create a file and name it <code>main.js</code> this file does not have a special meaning, you can name it whatever you want, like <code>index.js</code>.</p>
+<pre><code class="language-shell:node-ssg">cd src</code></pre>
+<pre><code class="language-shell:node-ssg/src">touch main.js</code></pre>
+<p>Open it with your favorite code editor, and add the following content.</p>
+<pre><code class="language-js:node-ssg/src/main.js">console.log(&quot;Hello, World!!!&quot;);</code></pre>
+<p>In your terminal run the following command.</p>
+<pre><code class="language-shell:node-ssg/src">node main.js</code></pre>
+<p>You should see <code>Hello, World!!!</code> displayed in your terminal, great we have Node.js running. If you change something in <code>main.js</code>, to see the changes you made you have to run again the command above, that&#39;s repetitive let&#39;s automate that process by installing a package that will detect if there&#39;s a change in our files and will run the command above automatically for us. The package is called <a href="https://nodemon.io">nodemon</a>.</p>
+<p>In your terminal run the following command to install it.</p>
+<pre><code class="language-shell:node-ssg">npm install nodemon --save-dev</code></pre>
+<p>Check your <code>package.json</code> file, you can see that we have nodemon installed, it is specified under _ devDependencies _ field.</p>
+<pre><code class="language-json:node-ssg/package.json">  &quot;devDependencies&quot;: {
+    &quot;nodemon&quot;: &quot;^2.0.4&quot;
+  },</code></pre>
+<p>Don&#39;t quit that file, in the <code>scripts</code> field we gonna add an <strong>npm script</strong> for nodemon, in Node.js we use npm scripts to automate repetitive tasks. You can learn more about the subject <a href="https://www.freecodecamp.org/news/introduction-to-npm-scripts-1dbb2ae01633">here</a>.</p>
+<pre><code class="language-json:node-ssg/package.json">&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;nodemon ./src/main.js&quot;
+}</code></pre>
+<p>You can now use the script above to start Node.js in your terminal.</p>
+<pre><code class="language-shell:node-ssg">npm run dev</code></pre>
+<p>Now if you make changes in <code>node-ssg/src/main.js</code> you don&#39;t have to run <code>node main.js</code> command again. Good, let&#39;s start working on our problems.</p>
+<h2 id="solve-each-small-problem">Solve each small problem.</h2>
+<p>Here we don&#39;t have many small problems, we going to solve them in order and we don&#39;t have to work on the fourth step If you broke down your problem into many small problems I recommend you start on the easier ones. It will help you to reason about the hard ones and find their solutions faster.</p>
+<h3 id="get-the-content-from-a-markdown-down-file">Get the content from a markdown down file.</h3>
+<p>First things first, we need Markdown content, in <code>src</code> create a file, name it <code>post.md</code>, copy the content from <a href="https://raw.githubusercontent.com/muco-rolle/mucotresor.com/develop/src/pages/blog/teach-your-self-touch-typing.mdx">this link</a> and then add it to the <code>post.md</code> the file you created in src.</p>
+<p>Until now we should have a folder structure which looks like this:</p>
+<pre><code class="language-shell:node-ssg">├── package-lock.json
+├── package.json
+└── src
+   ├── main.js
+   └── post.md</code></pre>
+<p>Let&#39;s give our interest to the <code>main.js</code> file, open it we gonna start writing the actual code, to get the content from a file, in Node.js there&#39;s a built-in module, which can help us to deal with that. Take look at the code below.</p>
+<pre><code class="language-js:node-ssg/src/main.js">const { join } = require(&quot;path&quot;);
+const { readFileSync } = require(&quot;fs&quot;);
+
+const markdownFile = join(process.cwd(), &quot;src/post.md&quot;);
+const markdownContent = readFileSync(markdownFile, &quot;utf8&quot;);
+
+console.log(markdownContent);</code></pre>
+<p>In the first two lines, I imported two built-in modules, the first one is <code>path</code> which is a module provides utilities for working with file and directory paths, the second is <code>fs</code> which is a module provides an API for interacting with the file system.</p>
+<!-- In nodejs many functions which deals with tasks that can take long time will come in two version a Synchronous version and an Asynchronous version for now we're using a Synchronous version because we don't gonna suffer from performance issues, for Async version it should be `readFile` only. -->
+
+<p>The next line is for the file we&#39;re working with, I like to work with absolute paths instead of relatives paths, I have <code>join</code> function which joins all given path segments together using the platform-specific separator as a delimiter, then normalizes the resulting path, the first parameter is a method <code>process.cwd()</code> which is giving me the current working directory, and the second is just the path for the actual file which contains Markdown content.</p>
+<p>Next, we&#39;re using <code>readFileSync</code> function to get the content from the file(<code>post.md</code>) we gave it in the first parameter, and in the second parameter I&#39;m specifying that I want the content to be encoded in <a href="https://en.wikipedia.org/wiki/UTF-8">UTF-8</a>, finally, I print the content. You can see the content of <code>post.md</code> in your terminal.</p>
+<p>Good, now we have the content, this problem is solved, we can go on the next one.</p>
+<h3 id="convert-markdown-content-to-html">Convert markdown content to HTML.</h3>
+<!-- We now have much down content it's time to convent them into html but you don't have to solve your problems in order you can start to the one which is easy and continously until you find complete all sub problems and assemble them into one big solution for the big problem. -->
+
+<p>How can we convert Markdown to HTML? I don&#39;t know either, it&#39;s time for a little research. In this situation, you have to find good solutions and choose one which integrates well in your workflow. I found a popular package on npm it is called <code>marked</code>, let&#39;s install it.</p>
+<pre><code class="language-shell:node-ssg">npm install marked</code></pre>
+<p>I hope on your side it has finished being installed, let&#39;s use it.</p>
+<pre><code class="language-js:node-ssg/src/main.js">const marked = require(&quot;marked&quot;);
+
+const htmlContent = marked(markdownContent);</code></pre>
+<p>In the first line we just imported marked and the second line we&#39;re using the marked function to convert Markdown content and in result, it returns HTML content.</p>
+<p>With our previous code we now have this:</p>
+<pre><code class="language-js{3,8,9}:node-ssg/src/main.js">const { join } = require(&quot;path&quot;);
+const { readFileSync } = require(&quot;fs&quot;);
+const marked = require(&quot;marked&quot;);
+
+const markdownFile = join(process.cwd(), &quot;src/post.md&quot;);
+const markdownContent = readFileSync(markdownFile, &quot;utf8&quot;);
+
+const htmlContent = marked(markdownContent);
+console.log(htmlContent);</code></pre>
+<h3 id="add-html-content-to-html-file">Add HTML content to html file</h3>
+<p>We now have HTML content, let&#39;s add it to the HTML file.</p>
+<pre><code class="language-js:node-ssg/src/main.js">const { writeFileSync } = require(&quot;fs&quot;);
+
+const htmlFile = markdownFile.slice(0, -3) + &quot;.html&quot;;
+
+writeFileSync(htmlFile, htmlContent);</code></pre>
+<p>Here I&#39;m importing <code>writeFileSync</code> function which is gonna help us to create the file and add the content to it, and then I took the markdown file, I removed the last 3 characters(<strong>.md</strong>) and replace it with <strong>.html</strong>, and finally, we use writeFileSync to create the file and add the content to it.</p>
+<p>With our previous code, we now have this:</p>
+<pre><code class="language-js{2,10,11}:node-ssg/src/main.js">const { join } = require(&quot;path&quot;);
+const { readFileSync, writeFileSync } = require(&quot;fs&quot;);
+const marked = require(&quot;marked&quot;);
+
+const markdownFile = join(process.cwd(), &quot;src/post.md&quot;);
+
+const markdownContent = readFileSync(markdownFile, &quot;utf8&quot;);
+const htmlContent = marked(markdownContent);
+
+const htmlFile = markdownFile.slice(0, -3) + &quot;.html&quot;;
+writeFileSync(htmlFile, htmlContent);</code></pre>
+<p>Check now in the <code>src</code> folder you should see a <code>post.html</code> file.</p>
+<p>You can immediately see that this project needs a lot of improvements, and you can add more features like:</p>
+<ul>
+<li><p>Be able to write many posts and convert them in HTML without hard coding the files.</p>
+</li>
+<li><p>Make posts look better, we don&#39;t have CSS styles now.</p>
+</li>
+<li><p>As a programmer, you would write content that includes code snippets so to have syntax highlight in your content is good too.</p>
+</li>
+<li><p>If you want to make it more useful you can add also more pages like home, about, and contact.</p>
+</li>
+</ul>
+<p>There&#39;s a lot of features that can be added. In upcoming articles, I will add those features I listed above. In the meantime, you can add them on your own I&#39;ll be happy to see what you come up with. You can even go crazy and make it a complete Static site generator like Jekyll, Hugo, etc.</p>
+<p>Thank you all, I hope you enjoyed reading this article. You can find the source code of this project on <a href="https://github.com/muco-rolle/node-ssg-tutorial/tree/v0.0.1">GitHub</a>.</p>
+  
+        </div>
+    </body>
+    </html>
+  
