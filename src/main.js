@@ -1,21 +1,9 @@
-/*
-const { join } = require('path');
-const { readFileSync, writeFileSync } = require('fs');
-const marked = require('marked');
+const { postsDirectory, buildDirectory } = require("./config");
+const { createPosts, generatePosts } = require("./modules/post");
 
-const markdownFile = join(process.cwd(), 'src/post.md');
+const posts = createPosts(postsDirectory);
 
-const markdownContent = readFileSync(markdownFile, 'utf8');
-const htmlContent = marked(markdownContent);
+generatePosts(posts, buildDirectory);
 
-const htmlFile = markdownFile.slice(0, -3) + '.html';
-writeFileSync(htmlFile, htmlContent);
-*/
-
-const { join } = require("path");
-const { generatePosts } = require("./modules/post");
-
-const markdownFolder = join(process.cwd(), "src/content");
-const htmlFolder = join(process.cwd(), "public/posts");
-
-generatePosts(markdownFolder, htmlFolder);
+// createHomePage(posts);
+// createAboutPage();

@@ -1,8 +1,15 @@
 const { join } = require("path");
-const { readdirSync, readFileSync, writeFileSync } = require("fs");
-const marked = require("marked");
-const frontmatter = require("front-matter");
+const {
+    readdirSync,
+    readFileSync,
+    writeFileSync,
+    existsSync,
+    mkdirSync,
+} = require("fs");
+const { parseMarkdown, postTemplate } = require("./utils");
+const { error } = require("console");
 
+/*
 const parseMarkdown = (markdownContent) => {
   const data = frontmatter(markdownContent);
 
@@ -27,16 +34,10 @@ const parseMarkdown = (markdownContent) => {
     body: marked(data.body),
   };
 
-  console.log(post);
   return post;
 };
 
-/**
- * Configuratin and generating one post
- * @param {string} htmlFolder
- * @param {string} fileName
- * @param {string} htmlContent
- */
+
 const generatePost = (htmlFolder, fileName, htmlContent) => {
   const { title, publishedAt, summary } = htmlContent.attributes;
   const { body } = htmlContent;
@@ -50,6 +51,7 @@ const generatePost = (htmlFolder, fileName, htmlContent) => {
         <meta name="description" content="${summary}" />
         <title>${title}</title>
     </head>
+    
     <body>
         <h1 className="post-title">${title}</h1>
         <p className="post-date">${publishedAt}</p>
@@ -63,11 +65,7 @@ const generatePost = (htmlFolder, fileName, htmlContent) => {
   writeFileSync(htmlFile, post);
 };
 
-/**
- * Generate posts
- * @param {string} markdownFolder
- * @param {string} htmlFolder
- */
+
 const generatePosts = (markdownFolder, htmlFolder) => {
   const markdownFiles = readdirSync(markdownFolder);
 
@@ -91,3 +89,36 @@ const generatePosts = (markdownFolder, htmlFolder) => {
 module.exports = {
   generatePosts,
 };
+*/
+const createPosts = (postsDirectory) => {
+    const markdownFiles = readdirSync(postsDirectory);
+
+    const htmlContents = markdownFiles.map((markdownFile) => {
+        const markdownContent = readFileSync(
+            join(postsDirectory, markdownFile),
+            "utf8"
+        );
+
+        return parseMarkdown(markdownFile, markdownContent);
+    });
+
+    return htmlContents;
+};
+
+const generatePosts = (posts, buildDirectory) => {
+    if (!existsSync(buildDirectory)) {
+        mkdirSync(join(buildDirectory, "./blog"), { recursive: true });
+    }
+
+    posts.map(({ path, attributes, body }) => {
+        const { title, summary, publishedAt } = attributes;
+        const post = postTemplate({ title, summary, publishedAt, body });
+
+        writeFileSync(join(buildDirectory, `./blog/${path}`), post, (error) => {
+            if (error) throw error;
+
+            console.log(`${path} was created successfully`);
+        });
+    });
+};
+module.exports = { createPosts, generatePosts };
