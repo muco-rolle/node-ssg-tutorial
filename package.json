@@ -15,6 +15,7 @@
   "dependencies": {
     "front-matter": "^4.0.2",
     "highlight.js": "^10.1.2",
-    "marked": "^1.1.1"
+    "marked": "^1.1.1",
+    "pug": "^3.0.0"
   }
 }
