@@ -47,9 +47,9 @@ This means that every problem that seems daunting, overwhelming, and even imposs
 
 The requirement for our project is to convert Markdown content to HTML. Here are the steps needed to fulfill it.
 
-- Get the content from a markdown down file
-- Convert markdown content to html
-- Add Markdown content to HTML file
+-   Get the content from a markdown down file
+-   Convert markdown content to html
+-   Add Markdown content to HTML file
 
 <!-- I got the idea to built my little version of a static site generator, I want it to be simple enough, just be able to write posts in markdown and have them generate them into html files. -->
 
@@ -67,16 +67,16 @@ The command above creates a file called `package.json` it'll contain all informa
 
 ```json:node-ssg/package.json
 {
-  "name": "node-ssg",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "node-ssg",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }
 ```
 
@@ -248,13 +248,13 @@ Check now in the `src` folder you should see a `post.html` file.
 
 You can immediately see that this project needs a lot of improvements, and you can add more features like:
 
-- Be able to write many posts and convert them in HTML without hard coding the files.
+-   Be able to write many posts and convert them in HTML without hard coding the files.
 
-- Make posts look better, we don't have CSS styles now.
+-   Make posts look better, we don't have CSS styles now.
 
-- As a programmer, you would write content that includes code snippets so to have syntax highlight in your content is good too.
+-   As a programmer, you would write content that includes code snippets so to have syntax highlight in your content is good too.
 
-- If you want to make it more useful you can add also more pages like home, about, and contact.
+-   If you want to make it more useful you can add also more pages like home, about, and contact.
 
 There's a lot of features that can be added. In upcoming articles, I will add those features I listed above. In the meantime, you can add them on your own I'll be happy to see what you come up with. You can even go crazy and make it a complete Static site generator like Jekyll, Hugo, etc.
 

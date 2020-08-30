@@ -6,3 +6,4 @@ generatePosts(posts);
 
 generatePage("index");
 generatePage("about");
+generatePage("contact");
