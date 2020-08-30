@@ -7,8 +7,9 @@ const {
     mkdirSync,
 } = require("fs");
 const { parseMarkdown, postTemplate } = require("./utils");
+const { postsDirectory, buildDirectory } = require("../config");
 
-const createPosts = (postsDirectory) => {
+const createPosts = () => {
     const markdownFiles = readdirSync(postsDirectory);
 
     const htmlContents = markdownFiles.map((markdownFile) => {
@@ -23,7 +24,7 @@ const createPosts = (postsDirectory) => {
     return htmlContents;
 };
 
-const generatePosts = (posts, buildDirectory) => {
+const generatePosts = (posts) => {
     if (!existsSync(buildDirectory)) {
         mkdirSync(join(buildDirectory, "./blog"), { recursive: true });
     }
