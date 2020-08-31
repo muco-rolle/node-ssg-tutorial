@@ -8,6 +8,14 @@ html(lang="en")
                 include includes/header.pug
 
           
-            h1 Home Page
+            main
+                div(class="posts")
+                    each post in posts
+                        article
+
+                            h3
+                                - path = post.path 
+                                a(href="blog/" + path) #{post.attributes.title}
+                            p #{post.attributes.summary}
         footer
             include includes/footer.pug
