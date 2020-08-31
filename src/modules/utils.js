@@ -39,16 +39,36 @@ const postTemplate = ({ title, summary, publishedAt, body }) => `
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="${summary}" />
-    <link rel="stylesheet" href="assets/css/node-ssg.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/hk-grotesk.min.css"> 
+
+    <link rel="stylesheet" href="../assets/css/node-ssg.css">
 	<title>${title}</title>
 </head>
 
 <body>
-	<h1 className="post-title">${title}</h1>
-	<p className="post-date">${publishedAt}</p>
-	<div className="node-ssg">
-		${body}  
-	</div>
+    <div class="container">
+        <header>
+            <nav>
+                <a class="logo" href="../index.html">Node SSG</a>
+                <ul>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        
+        <main class="post-content">
+            <h1 className="post-title">${title}</h1>
+            <p className="post-date">${publishedAt}</p>
+
+            ${body}  
+        </main>
+        
+        <footer>
+            Node SSG © 2020
+        </footer>
+    </div>
 </body>
 </html>
 `;

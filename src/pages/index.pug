@@ -3,7 +3,7 @@ html(lang="en")
    head 
     include includes/head.pug
     body    
-        div(class="node-ssg")
+        div(class="container")
             header
                 include includes/header.pug
 
@@ -16,6 +16,7 @@ html(lang="en")
                             h3
                                 - path = post.path 
                                 a(href="blog/" + path) #{post.attributes.title}
+                            p(class="article-date") #{post.attributes.publishedAt}
                             p #{post.attributes.summary}
-        footer
-            include includes/footer.pug
+            footer
+                include includes/footer.pug
