@@ -68,55 +68,176 @@ body {
       margin: 1rem 0; }
     .container main article:not(:first-child) {
       margin-top: 5rem; }
-  .container main .post-content .post-date {
-    margin-bottom: 4rem;
-    border: 1px solid red; }
-  .container main .post-content h1 {
-    font-size: 4rem; }
-  .container main .post-content h2 {
-    font-size: 3rem; }
-  .container main .post-content h3 {
-    font-size: 2.8rem; }
-  .container main .post-content h4 {
-    font-size: 2.3rem; }
-  .container main .post-content h5 {
-    font-size: 2rem; }
-  .container main .post-content h6 {
-    font-size: 1.6rem;
-    font-weight: 700; }
-  .container main .post-content p,
-  .container main .post-content a,
-  .container main .post-content ul,
-  .container main .post-content ol,
-  .container main .post-content li {
-    font-size: 1.8rem;
-    line-height: 1.5; }
-  .container main .post-content h1,
-  .container main .post-content h2,
-  .container main .post-content h3,
-  .container main .post-content h4,
-  .container main .post-content h5,
-  .container main .post-content h6,
-  .container main .post-content p,
-  .container main .post-content a,
-  .container main .post-content blockquote,
-  .container main .post-content q,
-  .container main .post-content hr {
-    margin: 1rem 0; }
-  .container main .post-content ul,
-  .container main .post-content ol {
-    margin: 0.5rem 2rem;
-    margin-left: 4rem; }
-  .container main .post-content li {
-    margin: 0.2rem 0; }
-  .container main .post-content blockquote {
-    background-color: #dee8f6;
-    border-left: 0.4em solid var(--color-primary-500);
-    padding: 0.4rem 0;
-    padding-left: 1.5rem;
-    font-style: italic; }
-    .container main .post-content blockquote a {
-      font-size: inherit; }
+  .container main .post-content {
+    /**
+ * VS theme by Andrew Lock (https://andrewlock.net)
+ * Inspired by Visual Studio syntax coloring
+ */
+    /* Code blocks */
+    /* Inline code */
+    /* overrides color-values for the Line Numbers plugin
+  * http://prismjs.com/plugins/line-numbers/
+  */
+    /* overrides color-values for the Line Highlight plugin
+ * http://prismjs.com/plugins/line-highlight/
+ */ }
+    .container main .post-content .post-date {
+      margin-bottom: 4rem;
+      border: 1px solid red; }
+    .container main .post-content h1 {
+      font-size: 4rem; }
+    .container main .post-content h2 {
+      font-size: 3rem; }
+    .container main .post-content h3 {
+      font-size: 2.8rem; }
+    .container main .post-content h4 {
+      font-size: 2.3rem; }
+    .container main .post-content h5 {
+      font-size: 2rem; }
+    .container main .post-content h6 {
+      font-size: 1.6rem;
+      font-weight: 700; }
+    .container main .post-content p,
+    .container main .post-content a,
+    .container main .post-content ul,
+    .container main .post-content ol,
+    .container main .post-content li {
+      font-size: 1.8rem;
+      line-height: 1.5; }
+    .container main .post-content h1,
+    .container main .post-content h2,
+    .container main .post-content h3,
+    .container main .post-content h4,
+    .container main .post-content h5,
+    .container main .post-content h6,
+    .container main .post-content p,
+    .container main .post-content a,
+    .container main .post-content blockquote,
+    .container main .post-content q,
+    .container main .post-content hr {
+      margin: 1rem 0; }
+    .container main .post-content ul,
+    .container main .post-content ol {
+      margin: 0.5rem 2rem;
+      margin-left: 4rem; }
+    .container main .post-content li {
+      margin: 0.2rem 0; }
+    .container main .post-content blockquote {
+      background-color: #dee8f6;
+      border-left: 0.4em solid var(--color-primary-500);
+      padding: 0.4rem 0;
+      padding-left: 1.5rem;
+      font-style: italic; }
+      .container main .post-content blockquote a {
+        font-size: inherit; }
+    .container main .post-content code[class*="language-"],
+    .container main .post-content pre[class*="language-"] {
+      color: #393a34;
+      font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+      direction: ltr;
+      text-align: left;
+      white-space: pre;
+      word-spacing: normal;
+      word-break: normal;
+      font-size: 0.9em;
+      line-height: 1.2em;
+      -moz-tab-size: 4;
+      -o-tab-size: 4;
+      tab-size: 4;
+      -webkit-hyphens: none;
+      -moz-hyphens: none;
+      -ms-hyphens: none;
+      hyphens: none; }
+    .container main .post-content pre > code[class*="language-"] {
+      font-size: 1em; }
+    .container main .post-content pre[class*="language-"]::-moz-selection,
+    .container main .post-content pre[class*="language-"] ::-moz-selection,
+    .container main .post-content code[class*="language-"]::-moz-selection,
+    .container main .post-content code[class*="language-"] ::-moz-selection {
+      background: #c1def1; }
+    .container main .post-content pre[class*="language-"]::selection,
+    .container main .post-content pre[class*="language-"] ::selection,
+    .container main .post-content code[class*="language-"]::selection,
+    .container main .post-content code[class*="language-"] ::selection {
+      background: #c1def1; }
+    .container main .post-content pre[class*="language-"],
+    .container main .post-content pre {
+      padding: 1em;
+      margin: 0.5em 0;
+      overflow: auto;
+      border: 1px solid #dddddd;
+      background-color: white; }
+    .container main .post-content :not(pre) > code[class*="language-"] {
+      padding: 0.2em;
+      padding-top: 1px;
+      padding-bottom: 1px;
+      background: #f8f8f8;
+      border: 1px solid #dddddd; }
+    .container main .post-content .token.comment,
+    .container main .post-content .token.prolog,
+    .container main .post-content .token.doctype,
+    .container main .post-content .token.cdata {
+      color: #008000;
+      font-style: italic; }
+    .container main .post-content .token.namespace {
+      opacity: 0.7; }
+    .container main .post-content .token.string {
+      color: #a31515; }
+    .container main .post-content .token.punctuation,
+    .container main .post-content .token.operator {
+      color: #393a34;
+      /* no highlight */ }
+    .container main .post-content .token.url,
+    .container main .post-content .token.symbol,
+    .container main .post-content .token.number,
+    .container main .post-content .token.boolean,
+    .container main .post-content .token.variable,
+    .container main .post-content .token.constant,
+    .container main .post-content .token.inserted {
+      color: #36acaa; }
+    .container main .post-content .token.atrule,
+    .container main .post-content .token.keyword,
+    .container main .post-content .token.attr-value,
+    .container main .post-content .language-autohotkey .token.selector,
+    .container main .post-content .language-json .token.boolean,
+    .container main .post-content .language-json .token.number,
+    .container main .post-content code[class*="language-css"] {
+      color: #0000ff; }
+    .container main .post-content .token.function {
+      color: #393a34; }
+    .container main .post-content .token.deleted,
+    .container main .post-content .language-autohotkey .token.tag {
+      color: #9a050f; }
+    .container main .post-content .token.selector,
+    .container main .post-content .language-autohotkey .token.keyword {
+      color: #00009f; }
+    .container main .post-content .token.important,
+    .container main .post-content .token.bold {
+      font-weight: bold; }
+    .container main .post-content .token.italic {
+      font-style: italic; }
+    .container main .post-content .token.class-name,
+    .container main .post-content .language-json .token.property {
+      color: #2b91af; }
+    .container main .post-content .token.tag,
+    .container main .post-content .token.selector {
+      color: #800000; }
+    .container main .post-content .token.attr-name,
+    .container main .post-content .token.property,
+    .container main .post-content .token.regex,
+    .container main .post-content .token.entity {
+      color: #ff0000; }
+    .container main .post-content .token.directive.tag .tag {
+      background: #ffff00;
+      color: #393a34; }
+    .container main .post-content .line-numbers .line-numbers-rows {
+      border-right-color: #a5a5a5; }
+    .container main .post-content .line-numbers-rows > span:before {
+      color: #2b91af; }
+    .container main .post-content .line-highlight {
+      background: rgba(193, 222, 241, 0.2);
+      background: -webkit-linear-gradient(left, rgba(193, 222, 241, 0.2) 70%, rgba(221, 222, 241, 0));
+      background: linear-gradient(to right, rgba(193, 222, 241, 0.2) 70%, rgba(221, 222, 241, 0)); }
   .container footer {
     text-align: center;
     margin: 4rem 0; }
