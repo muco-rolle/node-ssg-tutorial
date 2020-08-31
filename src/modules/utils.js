@@ -58,11 +58,13 @@ const postTemplate = ({ title, summary, publishedAt, body }) => `
         </header>
         
         
-        <main class="post-content">
-            <h1 className="post-title">${title}</h1>
-            <p className="post-date">${publishedAt}</p>
+        <main>
+            <div class="post-content">
+                <h1 className="post-title">${title}</h1>
+                <p className="post-date">${publishedAt}</p>
 
-            ${body}  
+                ${body}  
+            </div>
         </main>
         
         <footer>
