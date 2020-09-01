@@ -130,6 +130,12 @@ body {
       font-style: italic; }
       .container main .post-content blockquote a {
         font-size: inherit; }
+    .container main .post-content a {
+      font-weight: 900;
+      color: var(--color-primary-500);
+      text-decoration: none; }
+      .container main .post-content a:hover {
+        text-decoration: underline; }
     .container main .post-content code[class*="language-"],
     .container main .post-content pre[class*="language-"] {
       color: #393a34;
